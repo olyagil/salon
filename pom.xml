@@ -85,7 +85,7 @@
                                         <artifactId>webapp-runner.jar
                                         </artifactId>
                                         <version>8.0.30.2</version>
-                                        <destFileName>salon.jar</destFileName>
+                                        <destFileName>salon-1.0-SNAPSHOT.jar</destFileName>
                                     </artifactItem>
                                 </artifactItems>
                             </configuration>

@@ -1,0 +1,25 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Suite1">
+    <test name="ServiceService">
+        <classes>
+            <class
+                name="ServiceServiceImplTest"/>
+        </classes>
+    </test>
+
+    <test name="FeedbackService">
+        <classes>
+            <class
+                name="FeedbackServiceImplTest"/>
+        </classes>
+    </test>
+
+    <test name="UserService">
+        <classes>
+            <class
+                name="UserValidatorTest"/>
+        </classes>
+    </test>
+</suite>

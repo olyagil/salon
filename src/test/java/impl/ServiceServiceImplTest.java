@@ -1,4 +1,4 @@
-package by.bsac.beautysalon.service.impl;
+package impl;
 
 import by.bsac.beautysalon.dao.connection.ConnectionPool;
 import by.bsac.beautysalon.dao.mysql.DaoFactory;

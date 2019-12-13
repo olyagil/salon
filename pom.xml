@@ -145,7 +145,7 @@
                                 <manifest>
                                     <addClasspath>true</addClasspath>
                                     <classpathPrefix>lib/</classpathPrefix>
-                                    <mainClass>by.bsac.salon.Main</mainClass>
+<!--                                    <mainClass>by.bsac.salon.Main</mainClass>-->
                                 </manifest>
                             </archive>
                         <webXml>src/main/webapp/WEB-INF/web.xml</webXml>

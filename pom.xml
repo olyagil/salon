@@ -111,29 +111,6 @@
                     <groupId>com.heroku.sdk</groupId>
                     <artifactId>heroku-maven-plugin</artifactId>
                 </plugin>
-<!--                <plugin>-->
-<!--                    <groupId>org.apache.maven.plugins</groupId>-->
-<!--                    <artifactId>maven-dependency-plugin</artifactId>-->
-<!--                    <version>2.4</version>-->
-<!--                    <executions>-->
-<!--                        <execution>-->
-<!--                            <phase>package</phase>-->
-<!--                            <goals>-->
-<!--                                <goal>copy</goal>-->
-<!--                            </goals>-->
-<!--                            <configuration>-->
-<!--                                <artifactItems>-->
-<!--                                    <artifactItem>-->
-<!--                                        <groupId>com.github.jsimone</groupId>-->
-<!--                                        <artifactId>webapp-runner</artifactId>-->
-<!--                                        <version>8.0.30.2</version>-->
-<!--                                        <destFileName>webapp-runner.jar</destFileName>-->
-<!--                                    </artifactItem>-->
-<!--                                </artifactItems>-->
-<!--                            </configuration>-->
-<!--                        </execution>-->
-<!--                    </executions>-->
-<!--                </plugin>-->
 
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -141,25 +118,36 @@
                     <executions>
                         <execution>
                             <phase>package</phase>
-                            <goals><goal>copy</goal></goals>
+                            <goals>
+                                <goal>copy</goal>
+                            </goals>
                             <configuration>
                                 <artifactItems>
                                     <artifactItem>
                                         <groupId>com.github.jsimone</groupId>
                                         <artifactId>webapp-runner</artifactId>
                                         <version>9.0.13.0</version>
-                                        <destFileName>webapp-runner.jar</destFileName>
+                                        <destFileName>webapp-runner.jar
+                                        </destFileName>
                                     </artifactItem>
                                 </artifactItems>
                             </configuration>
                         </execution>
                     </executions>
                 </plugin>
+
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-war-plugin</artifactId>
                     <version>3.2.3</version>
                     <configuration>
+                            <archive>
+                                <manifest>
+                                    <addClasspath>true</addClasspath>
+                                    <classpathPrefix>lib/</classpathPrefix>
+                                    <mainClass>by.bsac.salon.Main</mainClass>
+                                </manifest>
+                            </archive>
                         <webXml>src/main/webapp/WEB-INF/web.xml</webXml>
                     </configuration>
                 </plugin>

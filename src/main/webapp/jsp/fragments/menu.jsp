@@ -48,21 +48,9 @@
 
         </c:choose>
 
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="${accountEditUrl}"
-               id="navbarDropdown" data-toggle="dropdown">
-                <fmt:message key="header.edit.profile"/> </a>
-            <div class="dropdown-menu">
-
-                <a class="dropdown-item"
-                   href="${accountEditInfoUrl}">
-                    <fmt:message key="header.edit.info"/></a>
-
-                <a class="dropdown-item"
+        <a class="nav-link"
                    href="${accountEditPasswordUrl}">
                     <fmt:message key="header.edit.password"/></a>
-            </div>
-        </li>
 
         <a class="nav-link" href="${logoutUrl}">
             <fmt:message key="header.logout"/> </a>

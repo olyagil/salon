@@ -73,13 +73,26 @@
     <build>
         <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
             <plugins>
-
+                <plugin>
+                    <!-- Build an executable JAR -->
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>3.1.0</version>
+                    <configuration>
+                        <archive>
+                            <manifest>
+                                <addClasspath>true</addClasspath>
+                                <mainClass>by.bsac.beautysalon.Main</mainClass>
+                            </manifest>
+                        </archive>
+                    </configuration>
+                </plugin>
                 <plugin>
                     <groupId>com.heroku.sdk</groupId>
                     <artifactId>heroku-maven-plugin</artifactId>
                     <configuration>
 <!--                        <processTypes>-->
-<!--                            <web>java $JAVA_OPTS -cp target/classes:target/dependency/* Main</web>-->
+<!--                            <web>java $JAVA_OPTS -cp target/classes:target/dependency/* by.bsac.beautysalon.Main</web>-->
 <!--                        </processTypes>-->
                     </configuration>
                 </plugin>

@@ -22,11 +22,6 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
             "role, surname, name, patronymic, gender, phone, " +
             "birth_date from users join user_info ui on users" +
             ".id = ui.user_id where role=?";
-    private static final String READ_ALL_BY_PARTS = "select user_id, " +
-            "login, " +
-            "role, surname, name, patronymic, gender, phone, " +
-            "birth_date from users join user_info ui on users" +
-            ".id = ui.user_id where role=? limit ?,?";
     private static final String READ_BY_LOGIN = "select user_id, login, " +
             "role, surname, name, patronymic, gender, phone, " +
             "birth_date from users join user_info ui on users" +
@@ -76,30 +71,6 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
         }
         return count;
     }
-
-
-    @Override
-    public List<User> read(int currentPage, int recordsPerPage)
-            throws DataBaseException {
-        int start = currentPage * recordsPerPage - recordsPerPage;
-        try (PreparedStatement statement = connection.prepareStatement(READ_ALL_BY_PARTS)) {
-            statement.setInt(1, 2);
-            statement.setInt(2, start);
-            statement.setInt(3, recordsPerPage);
-            List<User> userList;
-            try (ResultSet resultSet = statement.executeQuery()) {
-                userList = new ArrayList<>();
-                while (resultSet.next()) {
-                    userList.add(getBuilder().build(resultSet));
-                }
-            }
-            return userList;
-        } catch (SQLException e) {
-            LOGGER.error("Can't find parts users from DB.", e);
-            throw new DataBaseException(e);
-        }
-    }
-
     @Override
     public List<User> read(String login) throws DataBaseException {
         try (PreparedStatement statement = connection.prepareStatement(READ_BY_LOGIN)) {

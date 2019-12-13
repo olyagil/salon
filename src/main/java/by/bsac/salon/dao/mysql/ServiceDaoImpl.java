@@ -31,9 +31,6 @@ public class ServiceDaoImpl extends BaseDaoImpl implements ServiceDao {
             "from services where name like ? order by name";
     private static final String COUNT_SERVICES = "select count(id) "
             + "from services";
-    private static final String SELECT_ALL_BY_PARTS = "select id, name, "
-            + "description, price,  duration from services " +
-            "order by id limit ?,?";
     ServiceDaoImpl(Connection connection) {
         this.connection = connection;
     }
@@ -67,26 +64,6 @@ public class ServiceDaoImpl extends BaseDaoImpl implements ServiceDao {
             }
         } catch (SQLException e) {
             LOGGER.error("Can't read the services from DB", e);
-            throw new DataBaseException(e);
-        }
-    }
-    @Override
-    public List<Service> read(int currentPage, int recordsPerPage) throws DataBaseException {
-        int start = currentPage * recordsPerPage - recordsPerPage;
-
-        try (PreparedStatement statement =
-                     connection.prepareStatement(SELECT_ALL_BY_PARTS)) {
-            statement.setInt(1, start);
-            statement.setInt(2, recordsPerPage);
-            try (ResultSet resultSet = statement.executeQuery()) {
-                List<Service> serviceList = new ArrayList<>();
-                while (resultSet.next()) {
-                    serviceList.add(getBuilder().build(resultSet));
-                }
-                return serviceList;
-            }
-        } catch (SQLException e) {
-            LOGGER.error("Can't read by page the services", e);
             throw new DataBaseException(e);
         }
     }

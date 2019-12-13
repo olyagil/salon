@@ -9,8 +9,6 @@ import java.util.List;
 public interface Dao<Type extends Entity> {
     int countRows() throws DataBaseException;
 
-    List<Type> read(int currentPage, int recordsPerPage) throws DataBaseException;
-
     List<Type> read() throws DataBaseException;
 
     Integer create(Type entity) throws DataBaseException;

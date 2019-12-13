@@ -30,11 +30,6 @@ public class UserServiceImpl implements UserService {
         return dao.read();
     }
 
-    public List<User> find(int currentPage, int recordsPerPage)
-            throws DataBaseException {
-        return dao.read(currentPage, recordsPerPage);
-    }
-
     @Override
     public List<User> find(String login) throws DataBaseException {
         return dao.read(login);

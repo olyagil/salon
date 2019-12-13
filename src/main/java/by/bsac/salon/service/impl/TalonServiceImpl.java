@@ -23,12 +23,6 @@ public class TalonServiceImpl implements TalonService {
     public int countRows() throws DataBaseException {
         return dao.countRows();
     }
-
-    @Override
-    public List<Talon> find(int currentPage, int recordsPerPage) throws DataBaseException {
-        return dao.read(currentPage, recordsPerPage);
-    }
-
     @Override
     public List<Talon> findByClient(Integer clientId) throws DataBaseException {
         return dao.readByClient(clientId);

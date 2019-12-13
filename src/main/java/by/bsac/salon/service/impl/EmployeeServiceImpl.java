@@ -29,12 +29,6 @@ public class EmployeeServiceImpl implements EmployeeService {
     public List<Employee> find(String login) throws DataBaseException {
         return dao.read(login);
     }
-
-    @Override
-    public List<Employee> find(int currentPage, int recordsPerPage) throws DataBaseException {
-        return dao.read(currentPage, recordsPerPage);
-    }
-
     @Override
     public Employee find(Integer id) throws DataBaseException {
         return dao.read(id);

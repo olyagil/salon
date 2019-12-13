@@ -8,8 +8,6 @@ import java.util.List;
 public interface Service<Type extends Entity> {
     int countRows() throws DataBaseException;
 
-    List<Type> find(int currentPage, int recordsPerPage) throws DataBaseException;
-
     List<Type> find() throws DataBaseException;
 
     Type find(Integer id) throws DataBaseException;

@@ -26,8 +26,6 @@ public class TalonDaoImpl extends BaseDaoImpl implements TalonDao {
             + " status from talons join services s on service_id = s.id "
             + "join user_info client on talons.client_id = client.user_id "
             + "join user_info employee on talons.employee_id = employee.user_id ";
-    private static final String SELECT_ALL_BY_PARTS = SELECT_ALL
-            + "order by reception_date DESC limit ?,?";
     private static final String SELECT_BY_EMPLOYEE = SELECT_ALL
             + "where employee_id = ? order by reception_date DESC ;";
     private static final String SELECT_BY_CLIENT = SELECT_ALL
@@ -150,28 +148,6 @@ public class TalonDaoImpl extends BaseDaoImpl implements TalonDao {
         }
         return count;
     }
-
-    @Override
-    public List<Talon> read(int currentPage, int recordsPerPage) throws DataBaseException {
-        int start = currentPage * recordsPerPage - recordsPerPage;
-
-        try (PreparedStatement statement =
-                     connection.prepareStatement(SELECT_ALL_BY_PARTS)) {
-            statement.setInt(1, start);
-            statement.setInt(2, recordsPerPage);
-            try (ResultSet resultSet = statement.executeQuery()) {
-                List<Talon> talonList = new ArrayList<>();
-                while (resultSet.next()) {
-                    talonList.add(getBuilder().build(resultSet));
-                }
-                return talonList;
-            }
-        } catch (SQLException e) {
-            LOGGER.error("Can't read by page the talons", e);
-            throw new DataBaseException(e);
-        }
-    }
-
     @Override
     public List<Talon> read() throws DataBaseException {
         try (PreparedStatement statement =

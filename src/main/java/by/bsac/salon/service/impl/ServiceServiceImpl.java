@@ -26,11 +26,6 @@ public class ServiceServiceImpl implements ServiceService {
     }
 
     @Override
-    public List<Service> find(int currentPage, int recordsPerPage) throws DataBaseException {
-        return dao.read(currentPage, recordsPerPage);
-    }
-
-    @Override
     public Service find(Integer id) throws DataBaseException {
         return dao.read(id);
     }

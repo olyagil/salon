@@ -30,14 +30,6 @@ public class EmployeeDaoImpl extends BaseDaoImpl implements EmployeeDao {
             + "join user_info ui on employees.user_info_id = ui.user_id "
             + "join users users on employees.user_info_id = users.id "
             + "order by users.id";
-    private static final String SELECT_ALL_BY_PARTS = "select user_id, login,"
-            + "role, name,  surname,  patronymic, gender, "
-            + "phone, birth_date, cabinet_number, salary, "
-            + "employment_date, specialty "
-            + "from employees "
-            + "join user_info ui on employees.user_info_id = ui.user_id "
-            + "join users users on employees.user_info_id = users.id "
-            + "order by users.id limit ?,?";
     private static final String SELECT_BY_LOGIN = "select user_id, login, "
             + "role, name,  surname,  patronymic, gender, phone, "
             + "birth_date, cabinet_number, salary, "
@@ -89,27 +81,6 @@ public class EmployeeDaoImpl extends BaseDaoImpl implements EmployeeDao {
             return employeeList;
 
         } catch (SQLException e) {
-            throw new DataBaseException(e);
-        }
-    }
-
-    @Override
-    public List<Employee> read(int currentPage, int recordsPerPage) throws DataBaseException {
-        int start = currentPage * recordsPerPage - recordsPerPage;
-
-        try (PreparedStatement statement =
-                     connection.prepareStatement(SELECT_ALL_BY_PARTS)) {
-            statement.setInt(1, start);
-            statement.setInt(2, recordsPerPage);
-            try (ResultSet resultSet = statement.executeQuery()) {
-                List<Employee> employeeList = new ArrayList<>();
-                while (resultSet.next()) {
-                    employeeList.add(getBuilder().build(resultSet));
-                }
-                return employeeList;
-            }
-        } catch (SQLException e) {
-            LOGGER.error("Can't read by page the employees", e);
             throw new DataBaseException(e);
         }
     }

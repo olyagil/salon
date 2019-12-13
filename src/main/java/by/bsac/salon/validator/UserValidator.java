@@ -1,7 +1,6 @@
 package by.bsac.salon.validator;
 
 import by.bsac.salon.entity.enumeration.Gender;
-import by.bsac.salon.utill.ImageUtil;
 
 import javax.servlet.http.Part;
 import java.io.IOException;
@@ -29,19 +28,4 @@ public class UserValidator {
                 .replaceAll("-", "");
     }
 
-    public static String getAvatar(Part filePart, Gender gender) throws IOException{
-        InputStream stream = filePart.getInputStream();
-        byte[] imageBytes = stream.readAllBytes();
-        String avatar = Base64.getEncoder().encodeToString(imageBytes);
-        if (avatar.isEmpty()) {
-            if (gender.equals(Gender.MALE)) {
-                avatar = ImageUtil.encoderFromFile("D:/IdeaProjects" +
-                        "/epamTraining/taskFinalProject/web/img/man_avatar.png");
-            } else {
-                avatar = ImageUtil.encoderFromFile("D:/IdeaProjects" +
-                        "/epamTraining/taskFinalProject/web/img/woman_avatar.png");
-            }
-        }
-        return avatar;
-    }
 }

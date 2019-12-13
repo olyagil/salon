@@ -17,46 +17,46 @@ public class EmployeeDaoImpl extends BaseDaoImpl implements EmployeeDao {
     private static final Logger LOGGER = LogManager.getLogger();
 
     private static final String UPDATE_EMPLOYEE_BY_ID = "update employees "
-            + "set `cabinet_number`=?, `salary`=?, `employment_date`=?, "
-            + "`specialty`=? where user_info_id=?";
+            + "set cabinet_number=?, salary=?, employment_date=?, "
+            + "specialty=? where user_info_id=?";
     private static final String INSERT_EMPLOYEE = "insert into employees "
-            + "(user_info_id, `cabinet_number`, `salary`, `employment_date`, "
-            + "`specialty`) values (?,?,?,?,?)";
-    private static final String SELECT_ALL = "select `user_id`, `login`,"
-            + "`role`, `name`,  `surname`,  `patronymic`, `gender`, "
-            + "`phone`, `birth_date`, `avatar`, `cabinet_number`, `salary`, "
-            + "`employment_date`, `specialty`"
+            + "(user_info_id, cabinet_number, salary, employment_date, "
+            + "specialty) values (?,?,?,?,?)";
+    private static final String SELECT_ALL = "select user_id, login,"
+            + "role, name,  surname,  patronymic, gender, "
+            + "phone, birth_date, cabinet_number, salary, "
+            + "employment_date, specialty "
             + "from employees "
             + "join user_info ui on employees.user_info_id = ui.user_id "
-            + "join users users on employees.user_info_id = users.`id` "
-            + "order by users.`id`";
-    private static final String SELECT_ALL_BY_PARTS = "select `user_id`, `login`,"
-            + "`role`, `name`,  `surname`,  `patronymic`, `gender`, "
-            + "`phone`, `birth_date`, `avatar`, `cabinet_number`, `salary`, "
-            + "`employment_date`, `specialty`"
+            + "join users users on employees.user_info_id = users.id "
+            + "order by users.id";
+    private static final String SELECT_ALL_BY_PARTS = "select user_id, login,"
+            + "role, name,  surname,  patronymic, gender, "
+            + "phone, birth_date, cabinet_number, salary, "
+            + "employment_date, specialty "
             + "from employees "
             + "join user_info ui on employees.user_info_id = ui.user_id "
-            + "join users users on employees.user_info_id = users.`id` "
-            + "order by users.`id` limit ?,?";
-    private static final String SELECT_BY_LOGIN = "select `user_id`, `login`, "
-            + "`role`, `name`,  `surname`,  `patronymic`, `gender`, `phone`, "
-            + "`birth_date`, `avatar`, `cabinet_number`, `salary`, "
-            + "`employment_date`, `specialty`"
+            + "join users users on employees.user_info_id = users.id "
+            + "order by users.id limit ?,?";
+    private static final String SELECT_BY_LOGIN = "select user_id, login, "
+            + "role, name,  surname,  patronymic, gender, phone, "
+            + "birth_date, cabinet_number, salary, "
+            + "employment_date, specialty "
             + "from employees "
             + "join user_info ui on employees.user_info_id = ui.user_id\n"
-            + "join users users on employees.user_info_id = users.`id` "
-            + "where `login`=?";
+            + "join users users on employees.user_info_id = users.id "
+            + "where login=?";
 
-    private static final String SELECT_BY_ID = "select `user_id`, `login`, "
-            + "`role`, `name`,  `surname`,  `patronymic`, `gender`, `phone`, "
-            + "`birth_date`, `avatar`, `cabinet_number`, `salary`, "
-            + "`employment_date`, `specialty`"
+    private static final String SELECT_BY_ID = "select user_id, login, "
+            + "role, name,  surname,  patronymic, gender, phone, "
+            + "birth_date, cabinet_number, salary, "
+            + "employment_date, specialty "
             + "from employees "
             + "join user_info ui on employees.user_info_id = ui.user_id "
-            + "join users users on employees.user_info_id = users.`id` "
-            + "where `id`=?";
+            + "join users users on employees.user_info_id = users.id "
+            + "where id=?";
     private static final String COUNT_EMPLOYEES = "select count" +
-            "(`user_info_id`) from `employees`";
+            "(user_info_id) from employees";
 
     EmployeeDaoImpl(Connection connection) {
         this.connection = connection;

@@ -1,7 +1,6 @@
 package by.bsac.salon.command;
 
 import by.bsac.salon.command.account.AccountEditCommand;
-import by.bsac.salon.command.account.AccountSaveAvatarCommand;
 import by.bsac.salon.command.account.AccountSaveCommand;
 import by.bsac.salon.command.admin.*;
 import by.bsac.salon.command.common.LanguageCommand;
@@ -34,7 +33,6 @@ public enum CommandEnum {
     LOGOUT("logout", new LogoutCommand()),
 
     //ACCOUNT'S COMMANDS
-    ACCOUNT_SAVE_AVATAR("account/save/avatar", new AccountSaveAvatarCommand()),
     ACCOUNT_SAVE_INFO("account/save/info", new AccountSaveCommand()),
     ACCOUNT_SAVE_PASSWORD("account/save/password",
             new AccountSavePasswordCommand()),

@@ -19,34 +19,34 @@ import java.util.List;
 
 public class TalonDaoImpl extends BaseDaoImpl implements TalonDao {
     private static final Logger LOGGER = LogManager.getLogger();
-    private static final String SELECT_ALL = "select talons.`id`, "
-            + "`client_id`, `employee_id`, client.`surname`, client.`name`,"
-            + "client.`phone`, employee.`surname`, employee.`name`, "
-            + "employee.`phone`, s.`id`, s.`name`,`reception_date`,"
-            + " `status` from talons join services s on service_id = s.id "
+    private static final String SELECT_ALL = "select talons.id, "
+            + "client_id, employee_id, client.surname, client.name,"
+            + "client.phone, employee.surname, employee.name, "
+            + "employee.phone, s.id, s.name,reception_date,"
+            + " status from talons join services s on service_id = s.id "
             + "join user_info client on talons.client_id = client.user_id "
             + "join user_info employee on talons.employee_id = employee.user_id ";
     private static final String SELECT_ALL_BY_PARTS = SELECT_ALL
-            + "order by `reception_date` DESC limit ?,?";
+            + "order by reception_date DESC limit ?,?";
     private static final String SELECT_BY_EMPLOYEE = SELECT_ALL
-            + "where employee_id = ? order by `reception_date` DESC ;";
+            + "where employee_id = ? order by reception_date DESC ;";
     private static final String SELECT_BY_CLIENT = SELECT_ALL
-            + "where client_id = ? order by `reception_date` DESC ;";
+            + "where client_id = ? order by reception_date DESC ;";
     private static final String SELECT_BY_ID = SELECT_ALL
-            + "where talons.`id` = ? order by `reception_date` DESC ;";
+            + "where talons.id = ? order by reception_date DESC ;";
     private static final String SELECT_BY_STATUS = SELECT_ALL
-            + "where status = ? order by `reception_date` DESC ;";
+            + "where status = ? order by reception_date DESC ;";
     private static final String SELECT_BY_DATE = SELECT_ALL
-            + "where reception_date between ? and ? order by `reception_date` DESC ;";
-    private static final String INSERT_TALON = "insert into `talons`"
+            + "where reception_date between ? and ? order by reception_date DESC ;";
+    private static final String INSERT_TALON = "insert into talons"
             + "(client_id, service_id, employee_id, reception_date, status) "
             + "values (?, ?, ?, ?, ?);";
-    private static final String UPDATE_TALON = "update `talons` set service_id=?,"
-            + " `reception_date`=?, `status`=? where id=?";
-    private static final String DELETE_BY_ID = "delete from `talons` "
-            + "where `id`=?;";
-    private static final String COUNT_TALONS = "select count(`id`) "
-            + "from `talons`";
+    private static final String UPDATE_TALON = "update talons set service_id=?,"
+            + " reception_date=?, status=? where id=?";
+    private static final String DELETE_BY_ID = "delete from talons "
+            + "where id=?;";
+    private static final String COUNT_TALONS = "select count(id) "
+            + "from talons";
 
    TalonDaoImpl(Connection connection) {
         this.connection = connection;
@@ -205,7 +205,7 @@ public class TalonDaoImpl extends BaseDaoImpl implements TalonDao {
                     return resultSet.getInt(1);
                 } else {
                     LOGGER.error("There is no autoincrement index after trying " +
-                            "to add record into `talons` ");
+                            "to add record into talons ");
                     throw new DataBaseException();
                 }
             }

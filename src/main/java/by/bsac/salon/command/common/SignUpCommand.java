@@ -56,12 +56,6 @@ public class SignUpCommand extends Command {
                                 .getParameter(GENDER).toUpperCase());
                         String phone = request.getParameter(PHONE);
                         Date birthDate = Date.valueOf(request.getParameter(BIRTH_DATE));
-                        try {
-                            user.setAvatar(UserValidator.getAvatar(request.getPart(IMG), gender));
-                        } catch (IOException | ServletException e) {
-                            LOGGER.error("Can't read the image from file", e);
-                            throw new DataBaseException(e);
-                        }
                         user.setPhone(Integer.parseInt(UserValidator.getPhone(phone)));
 
                         user.setLogin(login);
@@ -71,7 +65,7 @@ public class SignUpCommand extends Command {
                         user.setPatronymic(patronymic);
                         user.setGender(gender);
                         user.setBirthDate(birthDate);
-                    } catch ( IllegalArgumentException e) {
+                    } catch (IllegalArgumentException e) {
                         LOGGER.error("Can't insert user in DB.", e);
                         session.setAttribute(MESSAGE_SIGNUP,
                                 "Incorrect data. Please, try again!");

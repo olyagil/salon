@@ -4,7 +4,6 @@ import by.bsac.salon.entity.Employee;
 import by.bsac.salon.entity.enumeration.Gender;
 import by.bsac.salon.entity.enumeration.Role;
 import by.bsac.salon.entity.enumeration.Specialty;
-import by.bsac.salon.utill.ImageUtil;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -42,7 +41,6 @@ public class EmployeeBuilder implements Builder<Employee> {
         employee.setGender(Gender.getById(resultSet.getInt(GENDER)));
         employee.setPhone(resultSet.getInt(PHONE));
         employee.setBirthDate(resultSet.getDate(BIRTH_DATE));
-        employee.setAvatar(ImageUtil.encoder(resultSet.getBlob(AVATAR)));
 
         return employee;
     }

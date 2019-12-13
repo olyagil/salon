@@ -70,13 +70,6 @@ public class EmployeeSaveCommand extends Command {
                             .getParameter(GENDER).toUpperCase()));
                     employee.setPhone(Integer.valueOf(request.getParameter(PHONE)));
                     employee.setBirthDate(Date.valueOf(request.getParameter(BIRTH_DATE)));
-                    try {
-                        employee.setAvatar(UserValidator.getAvatar(request.getPart(IMG),
-                                employee.getGender()));
-                    } catch (IOException | ServletException e) {
-                        LOGGER.error("Can't read the image from file", e);
-                        throw new DataBaseException(e);
-                    }
                     employee.setId(userService.save(employee));
                     LOGGER.debug("Employee is saved.");
 

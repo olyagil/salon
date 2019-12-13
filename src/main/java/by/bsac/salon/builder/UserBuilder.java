@@ -1,6 +1,5 @@
 package by.bsac.salon.builder;
 
-import by.bsac.salon.utill.ImageUtil;
 import by.bsac.salon.entity.User;
 import by.bsac.salon.entity.enumeration.Gender;
 import by.bsac.salon.entity.enumeration.Role;
@@ -19,7 +18,6 @@ public class UserBuilder implements Builder<User> {
     private static final String GENDER = "gender";
     private static final String PHONE = "phone";
     private static final String BIRTH_DATE = "birth_date";
-    private static final String AVATAR = "avatar";
 
     @Override
     public User build(ResultSet resultSet) throws SQLException {
@@ -33,7 +31,6 @@ public class UserBuilder implements Builder<User> {
         user.setGender(Gender.getById(resultSet.getInt(GENDER)));
         user.setPhone(resultSet.getInt(PHONE));
         user.setBirthDate(resultSet.getDate(BIRTH_DATE));
-        user.setAvatar(ImageUtil.encoder(resultSet.getBlob(AVATAR)));
 
         return user;
     }

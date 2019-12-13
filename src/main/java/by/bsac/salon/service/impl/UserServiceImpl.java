@@ -57,8 +57,6 @@ public class UserServiceImpl implements UserService {
                 user.setPassword(md5(user.getPassword()));
                 dao.updatePassword(user);
                 LOGGER.debug("Update password for user");
-            } else if (user.getAvatar() != null) {
-                dao.updateAvatar(user);
             } else {
                 dao.update(user);
                 LOGGER.debug("Update info about user");

@@ -4,7 +4,6 @@ import by.bsac.salon.dao.UserDao;
 import by.bsac.salon.entity.User;
 import by.bsac.salon.entity.enumeration.Role;
 import by.bsac.salon.exception.DataBaseException;
-import by.bsac.salon.utill.ImageUtil;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -19,44 +18,43 @@ import java.util.List;
 public class UserDaoImpl extends BaseDaoImpl implements UserDao {
 
     private static final Logger LOGGER = LogManager.getLogger();
-    private static final String READ_ALL = "select `user_id`, `login`, " +
-            "`role`, `surname`, `name`, `patronymic`, `gender`, `phone`, " +
-            "`birth_date`, `avatar` from `users` join user_info ui on users" +
-            ".id = ui.user_id where `role`=?";
-    private static final String READ_ALL_BY_PARTS = "select `user_id`, " +
-            "`login`, " +
-            "`role`, `surname`, `name`, `patronymic`, `gender`, `phone`, " +
-            "`birth_date`, `avatar` from `users` join user_info ui on users" +
-            ".id = ui.user_id where `role`=? limit ?,?";
-    private static final String READ_BY_LOGIN = "select `user_id`, `login`, " +
-            "`role`, `surname`, `name`, `patronymic`, `gender`, `phone`, " +
-            "`birth_date`, `avatar` from `users` join user_info ui on users" +
-            ".id = ui.user_id where `login`=?";
-    private static final String CREATE_USER = "insert into `users` (`login`, `password`, `role`)\n" +
+    private static final String READ_ALL = "select user_id, login, " +
+            "role, surname, name, patronymic, gender, phone, " +
+            "birth_date from users join user_info ui on users" +
+            ".id = ui.user_id where role=?";
+    private static final String READ_ALL_BY_PARTS = "select user_id, " +
+            "login, " +
+            "role, surname, name, patronymic, gender, phone, " +
+            "birth_date from users join user_info ui on users" +
+            ".id = ui.user_id where role=? limit ?,?";
+    private static final String READ_BY_LOGIN = "select user_id, login, " +
+            "role, surname, name, patronymic, gender, phone, " +
+            "birth_date from users join user_info ui on users" +
+            ".id = ui.user_id where login=?";
+    private static final String CREATE_USER = "insert into users (login, password, role)\n" +
             "values (?, ?, ?);";
-    private static final String CREATE_USER_BY_ID = "insert into `user_info`" +
-            " (`user_id`, `name`, `surname`, `patronymic`, `gender`," +
-            " `phone`, `birth_date`, `avatar`)" +
+    private static final String CREATE_USER_BY_ID = "insert into user_info" +
+            " (user_id, name, surname, patronymic, gender," +
+            " phone, birth_date)" +
             "VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
-    private static final String SELECT_BY_ID = "select `user_id`,`login`, "
-            + "`password`, `role`, `surname`, `name`,`patronymic`,`gender`, "
-            + "`phone`, `birth_date`, `avatar` "
-            + "from `users` join `user_info` ui on users.id=ui.user_id "
-            + "where `user_id`=?";
-    private static final String SELECT_BY_PASSWORD_LOGIN = " select `user_id`, "
-            + "`login`, `password`, `role`, `surname`, `name`, `patronymic`,"
-            + "`gender`, `phone`,`birth_date`, `avatar` "
-            + "from `users` join `user_info` ui on users.id=ui.user_id "
-            + "where `login`= ? and `password` = ?;";
-    private static final String UPDATE_USER_INFO = "update `users` join user_info ui on users.id = ui.user_id set `login`=?,\n" +
-            "`name`=?, `surname`=?, `patronymic`=?,\n" +
-            "`gender`=?, `birth_date`=?, `phone`=? where `user_id`=?;";
-    private static final String UPDATE_PASSWORD = "update `users` set " +
-            "`password`=? where `id`=?";
-    private static final String UPDATE_AVATAR = "update `user_info` set " +
-            "`avatar`=? where `user_id`=?";
+    private static final String SELECT_BY_ID = "select user_id,login, "
+            + "password, role, surname, name,patronymic,gender, "
+            + "phone, birth_date "
+            + "from users join user_info ui on users.id=ui.user_id "
+            + "where user_id=?";
+    private static final String SELECT_BY_PASSWORD_LOGIN = " select user_id, "
+            + "login, password, role, surname, name, patronymic,"
+            + "gender, phone,birth_date "
+            + "from users join user_info ui on users.id=ui.user_id "
+            + "where login= ? and password = ?;";
+    private static final String UPDATE_USER_INFO = "update users join user_info ui on users.id = ui.user_id set login=?,\n" +
+            "name=?, surname=?, patronymic=?,\n" +
+            "gender=?, birth_date=?, phone=? where user_id=?;";
+    private static final String UPDATE_PASSWORD = "update users set " +
+            "password=? where id=?";
+
     private static final String DELETE_BY_ID = "delete from users where id=?";
-    private static final String COUNT_USERS = "select count(`id`) from `users` where `role`=?";
+    private static final String COUNT_USERS = "select count(id) from users where role=?";
 
     UserDaoImpl(Connection connection) {
         this.connection = connection;
@@ -149,7 +147,6 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
             statement.setInt(5, user.getGender().getId());
             statement.setInt(6, user.getPhone());
             statement.setDate(7, user.getBirthDate());
-            statement.setBlob(8, ImageUtil.decoder(user.getAvatar()));
             statement.executeUpdate();
             return user.getId();
         } catch (SQLException e) {
@@ -173,7 +170,7 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
                     return resultSet.getInt(1);
                 } else {
                     LOGGER.error("There is no autoincremented index after trying " +
-                            "to add record into `users` ");
+                            "to add record into users ");
                     throw new DataBaseException();
                 }
             }
@@ -260,22 +257,7 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
         }
     }
 
-    @Override
-    public void updateAvatar(User user) throws DataBaseException {
-        try (PreparedStatement statement =
-                     connection.prepareStatement(UPDATE_AVATAR)) {
-            statement.setBlob(1, ImageUtil.decoder(user.getAvatar()));
-            statement.setInt(2, user.getId());
-            statement.executeUpdate();
-        } catch (SQLException e) {
-            LOGGER.error("Can't update avatar for user with id: "
-                    + user.getId(), e);
-            throw new DataBaseException(e);
-        }
-
-    }
-
-    @Override
+      @Override
     public boolean delete(Integer id) throws DataBaseException {
         try (PreparedStatement statement
                      = connection.prepareStatement(DELETE_BY_ID)) {

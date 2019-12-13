@@ -1,6 +1,5 @@
 by\bsac\salon\command\employee\TalonAddCommand.class
 by\bsac\salon\command\admin\EmployeeListCommand.class
-by\bsac\salon\Main.class
 by\bsac\salon\command\admin\ServiceDeleteCommand.class
 by\bsac\salon\entity\enumeration\Gender.class
 by\bsac\salon\service\impl\EmployeeServiceImpl.class
@@ -14,7 +13,6 @@ by\bsac\salon\command\admin\ClientListCommand.class
 by\bsac\salon\utill\PaginationUtil.class
 by\bsac\salon\command\common\LoginCommand.class
 by\bsac\salon\command\common\LogoutCommand.class
-by\bsac\salon\utill\ImageUtil.class
 by\bsac\salon\command\admin\ServiceListCommand.class
 by\bsac\salon\service\TalonService.class
 by\bsac\salon\dao\mysql\UserDaoImpl.class
@@ -72,7 +70,6 @@ by\bsac\salon\dao\UserDao.class
 by\bsac\salon\entity\Talon.class
 by\bsac\salon\dao\EmployeeDao.class
 by\bsac\salon\dao\mysql\EmployeeDaoImpl.class
-by\bsac\salon\command\account\AccountSaveAvatarCommand.class
 by\bsac\salon\command\admin\EmployeeAddCommand.class
 by\bsac\salon\command\admin\UserDeleteCommand.class
 by\bsac\salon\entity\enumeration\Role.class

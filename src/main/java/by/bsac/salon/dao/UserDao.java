@@ -16,7 +16,6 @@ public interface UserDao extends Dao<User> {
 
     void updatePassword(User user) throws DataBaseException;
 
-    void updateAvatar(User user) throws DataBaseException;
 
     default Builder<User> getBuilder() {
         return new UserBuilder();

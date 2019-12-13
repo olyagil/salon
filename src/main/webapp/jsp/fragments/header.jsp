@@ -39,8 +39,6 @@
                         <fmt:message key="header.employees"/>
                     </a>
                 </li>
-
-
                 <c:if test="${empty sessionScope.role}">
                     <li class="nav-item">
                         <c:url value="/signup.html" var="signupUrl"/>

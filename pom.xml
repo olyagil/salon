@@ -18,7 +18,17 @@
             <version>7.0.0</version>
             <scope>test</scope>
         </dependency>
-
+        <dependency>
+            <groupId>jstl</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-web-api</artifactId>
+            <version>6.0</version>
+            <scope>provided</scope>
+        </dependency>
         <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
         <dependency>
             <groupId>mysql</groupId>
@@ -77,12 +87,13 @@
                     <!-- Build an executable JAR -->
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-jar-plugin</artifactId>
-                    <version>3.1.0</version>
+                    <version>3.1.2</version>
                     <configuration>
                         <archive>
                             <manifest>
                                 <addClasspath>true</addClasspath>
-                                <mainClass>by.bsac.beautysalon.Main</mainClass>
+                                <classpathPrefix>lib/</classpathPrefix>
+                                <mainClass>by.bsac.salon.Main</mainClass>
                             </manifest>
                         </archive>
                     </configuration>
@@ -90,43 +101,36 @@
                 <plugin>
                     <groupId>com.heroku.sdk</groupId>
                     <artifactId>heroku-maven-plugin</artifactId>
-                    <configuration>
-<!--                        <processTypes>-->
-<!--                            <web>java $JAVA_OPTS -cp target/classes:target/dependency/* by.bsac.beautysalon.Main</web>-->
-<!--                        </processTypes>-->
-                    </configuration>
                 </plugin>
-<!--                <plugin>-->
-<!--                    <groupId>org.apache.maven.plugins</groupId>-->
-<!--                    <artifactId>maven-dependency-plugin</artifactId>-->
-<!--                    <version>2.4</version>-->
-<!--                    <executions>-->
-<!--                        <execution>-->
-<!--                            <phase>package</phase>-->
-<!--                            <goals>-->
-<!--                                <goal>copy</goal>-->
-<!--                            </goals>-->
-<!--                            <configuration>-->
-<!--                                <artifactItems>-->
-<!--                                    <artifactItem>-->
-<!--                                        <groupId>com.github.jsimone</groupId>-->
-<!--                                        <artifactId>webapp-runner.jar-->
-<!--                                        </artifactId>-->
-<!--                                        <version>8.0.30.2</version>-->
-<!--                                        <destFileName>salon-1.0-SNAPSHOT.jar</destFileName>-->
-<!--                                    </artifactItem>-->
-<!--                                </artifactItems>-->
-<!--                            </configuration>-->
-<!--                        </execution>-->
-<!--                    </executions>-->
-<!--                </plugin>-->
-
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-dependency-plugin</artifactId>
+                    <version>2.4</version>
+                    <executions>
+                        <execution>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>copy</goal>
+                            </goals>
+                            <configuration>
+                                <artifactItems>
+                                    <artifactItem>
+                                        <groupId>com.github.jsimone</groupId>
+                                        <artifactId>webapp-runner</artifactId>
+                                        <version>8.0.30.2</version>
+                                        <destFileName>webapp-runner.jar</destFileName>
+                                    </artifactItem>
+                                </artifactItems>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-war-plugin</artifactId>
-                    <version>2.4</version>
+                    <version>3.2.3</version>
                     <configuration>
-                        <webXml>src/webapp/WEB-INF/web.xml</webXml>
+                        <webXml>src/main/webapp/WEB-INF/web.xml</webXml>
                     </configuration>
                 </plugin>
 

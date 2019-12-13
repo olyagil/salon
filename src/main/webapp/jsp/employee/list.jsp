@@ -58,7 +58,6 @@
                         <thead>
                         <tr>
                             <th> №</th>
-                            <th><fmt:message key="user.avatar"/></th>
                             <th><fmt:message key="user.login"/></th>
                             <th><fmt:message key="user.surname"/></th>
                             <th><fmt:message key="user.name"/></th>
@@ -86,11 +85,6 @@
                                                value="${employee.role.id}">
                                     </form>
                                 </td>
-                                <td><img src="data:image/png;base64,
-                                        ${employee.avatar}"
-                                         width="100" height="100"
-                                         class="rounded-circle img-fluid"
-                                         alt="avatar"></td>
                                 <td><c:out value="${employee.login}"/></td>
                                 <td><c:out value="${employee.surname}"/></td>
                                 <td><c:out value="${employee.name}"/></td>

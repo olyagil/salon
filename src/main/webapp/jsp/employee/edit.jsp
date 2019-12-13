@@ -39,12 +39,6 @@
 
         <div class="row">
             <div class="col-md-3"><!--left col-->
-                <div class="text-center">
-                    <img src="data:image/png;base64,
-                    ${requestScope.user.avatar}"
-                         class="avatar img-circle img-thumbnail img-responsive"
-                         width="250" height="250" alt="avatar">
-                </div>
                 <hr>
             </div>
             <hr>

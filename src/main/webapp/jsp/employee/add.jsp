@@ -96,13 +96,6 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="img">
-                                <fmt:message key="user.avatar"/> </label>
-                            <input type="file" name="img" id="img"
-                                   class="form-control" required>
-                        </div>
-
-                        <div class="form-group">
                             <label class="radio inline">
                                 <input type="radio" name="gender"
                                        value="male">

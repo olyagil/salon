@@ -26,11 +26,6 @@
         <!-- Grid column -->
         <c:forEach items="${requestScope.employees}" var="employee">
             <div class="col-lg-4 col-md-6 mb-lg-0 mb-5">
-                <div class="avatar mx-auto">
-                    <img src="data:image/png;base64,${employee.avatar}"
-                         class="rounded-circle z-depth-1"
-                         width="300" height="300" alt="avatar">
-                </div>
                 <h5 class="font-weight-bold mt-4 mb-3">
                         ${employee.surname} ${employee.name}</h5>
                 <p class="text-uppercase blue-text">

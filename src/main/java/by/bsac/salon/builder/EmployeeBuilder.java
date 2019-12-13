@@ -23,7 +23,6 @@ public class EmployeeBuilder implements Builder<Employee> {
     private static final String GENDER = "gender";
     private static final String PHONE = "phone";
     private static final String BIRTH_DATE = "birth_date";
-    private static final String AVATAR = "avatar";
 
     @Override
     public Employee build(ResultSet resultSet) throws SQLException {

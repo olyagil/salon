@@ -19,11 +19,6 @@
     <br>
     <div class="row">
         <div class="col-sm-4"><!--left col-->
-            <div class="text-center">
-                <img src="data:image/png;base64, ${requestScope.loggedUser.avatar}"
-                     class="avatar img-circle img-thumbnail img-responsive"
-                     alt="avatar">
-            </div>
         </div>
 
         <div class="col-sm-8">

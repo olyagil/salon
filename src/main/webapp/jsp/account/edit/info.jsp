@@ -26,27 +26,6 @@
     <br>
     <br>
     <div class="row">
-        <!--left col-->
-        <c:url value="/account/save/avatar.html" var="saveImgUrl"/>
-        <div class="col-md-3">
-            <form action="${saveImgUrl}" method="post"
-                  enctype="multipart/form-data">
-                <div class="text-center">
-                    <img src="data:image/png;base64,${requestScope.user.avatar}"
-                         class="avatar img-circle img-thumbnail img-responsive"
-                         alt="avatar">
-                    <h6><fmt:message key="edit.avatar"/></h6>
-                    <input type="file" name="img"
-                           class="text-center center-block file-upload"
-                           required>
-                     <button type="submit"
-                            class="btn btn-success float-right">
-                        <fmt:message key="button.change"/>
-                    </button>
-                </div>
-
-            </form>
-        </div>
         <hr>
 
         <div class="col-md-9">

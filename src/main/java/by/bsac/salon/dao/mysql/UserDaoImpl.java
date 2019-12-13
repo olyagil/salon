@@ -36,7 +36,7 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
     private static final String CREATE_USER_BY_ID = "insert into user_info" +
             " (user_id, name, surname, patronymic, gender," +
             " phone, birth_date)" +
-            "VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
+            "VALUES (?, ?, ?, ?, ?, ?, ?);";
     private static final String SELECT_BY_ID = "select user_id,login, "
             + "password, role, surname, name,patronymic,gender, "
             + "phone, birth_date "

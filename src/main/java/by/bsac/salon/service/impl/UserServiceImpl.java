@@ -47,14 +47,14 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User find(String login, String password) throws DataBaseException {
-        return dao.read(login, md5(password));
+        return dao.read(login, password);
     }
 
     @Override
     public Integer save(User user) throws DataBaseException {
         if (user.getId() != null) {
             if (user.getPassword() != null) {
-                user.setPassword(md5(user.getPassword()));
+                user.setPassword(user.getPassword());
                 dao.updatePassword(user);
                 LOGGER.debug("Update password for user");
             } else {
@@ -62,7 +62,7 @@ public class UserServiceImpl implements UserService {
                 LOGGER.debug("Update info about user");
             }
         } else {
-            user.setPassword(md5(user.getPassword()));
+            user.setPassword(user.getPassword());
             user.setId(dao.create(user));
             LOGGER.debug("Create user info");
         }
@@ -76,23 +76,4 @@ public class UserServiceImpl implements UserService {
 
     }
 
-    private String md5(String password) {
-        MessageDigest messageDigest;
-        try {
-            messageDigest = MessageDigest.getInstance("md5");
-            messageDigest.reset();
-            messageDigest.update(password.getBytes());
-            byte[] hash = messageDigest.digest();
-            Formatter formatter = new Formatter();
-
-            for (int i = 0; i < hash.length; i++) {
-                formatter.format("%02X", hash[i]);
-            }
-            String m5sum = formatter.toString();
-            formatter.close();
-            return m5sum;
-        } catch (NoSuchAlgorithmException e) {
-            return null;
-        }
-    }
 }

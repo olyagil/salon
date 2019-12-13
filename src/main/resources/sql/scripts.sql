@@ -77,18 +77,18 @@ insert into users (id,
                    role)
 values (1,
         'admin',
-        '21232f297a57a5a743894a0e4a801fc3',
+        'admin',
         0);
 
 insert into users (id,
                    login,
                    password,
                    role)
-values (2, 'client1', '62608e08adc29a8d6dbc9754e659f125', 2),/*md5 for client*/
-       (3, 'client2', '62608e08adc29a8d6dbc9754e659f125', 2),
+values (2, 'client1', 'client', 2),/*md5 for client*/
+       (3, 'client2', 'client', 2),
     /*md5 for employee*/
-       (4, 'employee2', 'FA5473530E4D1A5A1E1EB53D2FEDB10C', 1),
-       (5, 'employee3', 'FA5473530E4D1A5A1E1EB53D2FEDB10C', 1);
+       (4, 'employee2', 'employee', 1),
+       (5, 'employee3', 'employee', 1);
 
 
 insert into user_info(user_id, surname, name,

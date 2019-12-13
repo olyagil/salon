@@ -18,34 +18,25 @@ public class ServiceDaoImpl extends BaseDaoImpl implements ServiceDao {
     private static final Logger LOGGER = LogManager.getLogger();
     private static final String SELECT_ALL = "select `id`, `name`, "
             + "`description`, `price`, `duration` from `services`";
-
     private static final String DELETE_BY_ID = "delete from `services` where `id`=?";
-
     private static final String UPDATE_SERVICE = "update `services` set `name`=?,"
             + " `description`=?, `price`=?, `duration`=? where `id`=?";
-
     private static final String SELECT_BY_ID = "select `id`, `name`, " +
             "`description`, "
             + "`price`, `duration` from `services` where `id`=?";
-
     private static final String INSERT_SERVICE = "insert into `services`"
             + "(`name`, `description`, `price`, `duration`) values (?,?,?,?)";
-
     private static final String READ_SERVICE_BY_NAME = "select `id`, `name`, "
             + "`description`, `price`, `duration` " +
             "from `services` where `name` like ? order by name";
-
     private static final String COUNT_SERVICES = "select count(`id`) "
             + "from `services`";
     private static final String SELECT_ALL_BY_PARTS = "select `id`, `name`, "
             + "`description`, `price`,  `duration` from `services` " +
             "order by `id` limit ?,?";
-
     ServiceDaoImpl(Connection connection) {
         this.connection = connection;
     }
-
-
     @Override
     public int countRows() throws DataBaseException {
         int count = 0;
@@ -61,7 +52,6 @@ public class ServiceDaoImpl extends BaseDaoImpl implements ServiceDao {
         }
         return count;
     }
-
     @Override
     public List<Service> read(String name) throws DataBaseException {
         try (PreparedStatement statement =
@@ -80,7 +70,6 @@ public class ServiceDaoImpl extends BaseDaoImpl implements ServiceDao {
             throw new DataBaseException(e);
         }
     }
-
     @Override
     public List<Service> read(int currentPage, int recordsPerPage) throws DataBaseException {
         int start = currentPage * recordsPerPage - recordsPerPage;
@@ -100,9 +89,7 @@ public class ServiceDaoImpl extends BaseDaoImpl implements ServiceDao {
             LOGGER.error("Can't read by page the services", e);
             throw new DataBaseException(e);
         }
-
     }
-
     @Override
     public List<Service> read() throws DataBaseException {
         try (PreparedStatement statement =
@@ -120,7 +107,6 @@ public class ServiceDaoImpl extends BaseDaoImpl implements ServiceDao {
             throw new DataBaseException(e);
         }
     }
-
     @Override
     public Integer create(Service service) throws DataBaseException {
         try (PreparedStatement statement = connection.prepareStatement(INSERT_SERVICE,
@@ -144,7 +130,6 @@ public class ServiceDaoImpl extends BaseDaoImpl implements ServiceDao {
             throw new DataBaseException(e);
         }
     }
-
     @Override
     public Service read(Integer id) throws DataBaseException {
         try (PreparedStatement statement = connection.prepareStatement(SELECT_BY_ID)) {
@@ -162,7 +147,6 @@ public class ServiceDaoImpl extends BaseDaoImpl implements ServiceDao {
         }
 
     }
-
     @Override
     public boolean update(Service service) throws DataBaseException {
         try (PreparedStatement statement =
@@ -179,7 +163,6 @@ public class ServiceDaoImpl extends BaseDaoImpl implements ServiceDao {
             throw new DataBaseException(e);
         }
     }
-
     @Override
     public boolean delete(Integer id) throws DataBaseException {
         try (PreparedStatement statement = connection.prepareStatement(DELETE_BY_ID)) {

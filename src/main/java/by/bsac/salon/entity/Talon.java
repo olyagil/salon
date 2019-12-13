@@ -3,7 +3,6 @@ package by.bsac.salon.entity;
 import java.sql.Timestamp;
 
 public class Talon extends Entity {
-
     private User client;
     private Service service;
     private Employee employee;

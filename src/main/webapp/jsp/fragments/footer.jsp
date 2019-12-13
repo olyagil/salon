@@ -38,10 +38,7 @@
                 <p><a class="dark-grey-text" href="${specialistUrl}">
                     <fmt:message key="header.employees"/>
                 </a>
-                    <c:url value="/feedback.html" var="feedbackUrl"/>
-                <p><a class="dark-grey-text" href="${feedbackUrl}">
-                    <fmt:message key="header.feedback"/></a>
-                </p>
+
             </div>
 
             <div class="col-md-4 col-lg-3 col-xl-3 mx-auto  mb-4">

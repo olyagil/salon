@@ -16,43 +16,37 @@
            href="${accountMainUrl}"><fmt:message key="menu.main"/> </a>
         <c:url value="/client/list.html" var="clientListUrl"/>
         <c:url value="/employee/list.html" var="employeeListUrl"/>
+
         <c:url value="/service/list.html" var="serviceListUrl"/>
         <c:url value="/talon/list.html" var="talonListUrl"/>
-        <c:url value="/feedback/list.html" var="feedbackListUrl"/> <c:choose>
+        <c:choose>
 
 
-        <c:when test="${sessionScope.role eq 0}">
-            <a class="nav-link" href="${clientListUrl}">
-                <fmt:message key="menu.client.list"/></a>
+            <c:when test="${sessionScope.role eq 0}">
+                <a class="nav-link" href="${clientListUrl}">
+                    <fmt:message key="menu.client.list"/></a>
 
-            <a class="nav-link" href="${employeeListUrl}">
-                <fmt:message key="menu.employee.list"/></a>
+                <a class="nav-link" href="${employeeListUrl}">
+                    <fmt:message key="menu.employee.list"/></a>
 
-            <a class="nav-link" href="${serviceListUrl}">
-                <fmt:message key="menu.services.list"/> </a>
+                <a class="nav-link" href="${serviceListUrl}">
+                    <fmt:message key="menu.services.list"/> </a>
 
-            <a class="nav-link" href="${talonListUrl}">
-                <fmt:message key="menu.talon.list"/></a>
+                <a class="nav-link" href="${talonListUrl}">
+                    <fmt:message key="menu.talon.list"/></a>
+            </c:when>
 
-            <a class="nav-link" href="${feedbackListUrl}">
-                <fmt:message key="menu.feedback.list"/></a>
-        </c:when>
+            <c:when test="${sessionScope.role eq 1}">
+                <a class="nav-link" href="${talonListUrl}">
+                    <fmt:message key="menu.talon.list"/></a>
+            </c:when>
 
-        <c:when test="${sessionScope.role eq }">
-            <a class="nav-link" href="${feedback1ListUrl}">
-                <fmt:message key="menu.feedback.list"/></a>
-            <a class="nav-link" href="${talonListUrl}">
-                <fmt:message key="menu.talon.list"/></a>
-        </c:when>
+            <c:when test="${sessionScope.role eq 2}">
+                <a class="nav-link" href="${talonListUrl}">
+                    <fmt:message key="menu.talon.list"/></a>
+            </c:when>
 
-        <c:when test="${sessionScope.role eq 2}">
-            <a class="nav-link" href="${feedbackListUrl}">
-                <fmt:message key="menu.feedback.list"/></a>
-            <a class="nav-link" href="${talonListUrl}">
-                <fmt:message key="menu.talon.list"/></a>
-        </c:when>
-
-    </c:choose>
+        </c:choose>
 
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="${accountEditUrl}"

@@ -112,9 +112,7 @@
                             </c:if>
                             <th><fmt:message key="service.name"/></th>
                             <th><fmt:message key="service.date"/></th>
-                            <c:if test="${sessionScope.role eq 2}">
-                                <th><fmt:message key="feedback"/></th>
-                            </c:if>
+
                             <c:if test="${sessionScope.role ne 2}">
                                 <th><fmt:message key="talon.status"/></th>
                             </c:if>
@@ -165,21 +163,6 @@
                             </c:choose>
                             </c:if>
 
-                            <c:if test="${sessionScope.role eq 2}">
-                                <td>
-                                    <c:url value="/feedback/add.html"
-                                           var="feedbackAddUrl"/>
-                                    <form action="${feedbackAddUrl}"
-                                          method="get">
-                                        <input type="hidden" name="talonId"
-                                               value="${talon.id}">
-                                        <button type="submit"
-                                                class="btn btn-primary">
-                                            <fmt:message key="feedback.add"/>
-                                        </button>
-                                    </form>
-                                </td>
-                            </c:if>
                             </tr>
                         </c:forEach>
                         </tbody>

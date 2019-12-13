@@ -37,7 +37,6 @@ D:\salon\src\main\java\by\bsac\salon\service\impl\EmployeeServiceImpl.java
 D:\salon\src\main\java\by\bsac\salon\command\account\AccountSavePasswordCommand.java
 D:\salon\src\main\java\by\bsac\salon\command\Command.java
 D:\salon\src\main\java\by\bsac\salon\command\Forward.java
-D:\salon\src\main\java\by\bsac\salon\Main.java
 D:\salon\src\main\java\by\bsac\salon\service\impl\TalonServiceImpl.java
 D:\salon\src\main\java\by\bsac\salon\service\UserService.java
 D:\salon\src\main\java\by\bsac\salon\dao\connection\PooledConnection.java
@@ -56,7 +55,6 @@ D:\salon\src\main\java\by\bsac\salon\builder\EmployeeBuilder.java
 D:\salon\src\main\java\by\bsac\salon\entity\enumeration\Gender.java
 D:\salon\src\main\java\by\bsac\salon\entity\Entity.java
 D:\salon\src\main\java\by\bsac\salon\entity\Service.java
-D:\salon\src\main\java\by\bsac\salon\utill\ImageUtil.java
 D:\salon\src\main\java\by\bsac\salon\command\account\AccountMainCommand.java
 D:\salon\src\main\java\by\bsac\salon\service\ServiceFactory.java
 D:\salon\src\main\java\by\bsac\salon\command\admin\EmployeeSaveCommand.java
@@ -76,4 +74,3 @@ D:\salon\src\main\java\by\bsac\salon\command\common\MainCommand.java
 D:\salon\src\main\java\by\bsac\salon\command\employee\TalonSaveCommand.java
 D:\salon\src\main\java\by\bsac\salon\command\admin\EmployeeAddCommand.java
 D:\salon\src\main\java\by\bsac\salon\dao\UserDao.java
-D:\salon\src\main\java\by\bsac\salon\command\account\AccountSaveAvatarCommand.java

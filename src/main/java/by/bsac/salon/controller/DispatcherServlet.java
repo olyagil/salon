@@ -80,6 +80,4 @@ public class DispatcherServlet extends HttpServlet {
         LOGGER.debug("This is a post-method.");
         processRequest(req, resp);
     }
-
-
 }

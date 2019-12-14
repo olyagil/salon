@@ -64,12 +64,7 @@
                                href="${accountMainUrl}">
                                 <fmt:message key="header.profile"/>
                             </a>
-                            <c:url value="/account/edit/info.html"
-                                   var="accountEditInfoUrl"/>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item"
-                               href="${accountEditInfoUrl}">
-                                <fmt:message key="header.edit.info"/></a>
+
                             <c:url value="/account/edit/password.html"
                                    var="accountEditPasswordUrl"/>
                             <a class="dropdown-item"

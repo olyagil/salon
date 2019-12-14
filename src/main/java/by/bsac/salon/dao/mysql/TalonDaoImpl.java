@@ -19,13 +19,14 @@ import java.util.List;
 
 public class TalonDaoImpl extends BaseDaoImpl implements TalonDao {
     private static final Logger LOGGER = LogManager.getLogger();
-    private static final String SELECT_ALL = "select talons.id, "
-            + "client_id, employee_id, client.surname, client.name,"
-            + "client.phone, employee.surname, employee.name, "
-            + "employee.phone, s.id, s.name,reception_date,"
-            + " status from talons join services s on service_id = s.id "
-            + "join user_info client on talons.client_id = client.user_id "
-            + "join user_info employee on talons.employee_id = employee.user_id ";
+    private static final String SELECT_ALL = "select talons.id,\n" +
+            "            client_id, employee_id, client.surname, client.name,\n" +
+            "            client.phone, employee.surname, employee.name,\n" +
+            "            employee.phone, s.id, s.name,reception_date,\n" +
+            "            status from talons join services s on service_id = s.id\n" +
+            "            join user_info client on talons.client_id = client.user_id\n" +
+            "            join user_info employee on talons.employee_id = " +
+            "employee.user_id ";
     private static final String SELECT_BY_EMPLOYEE = SELECT_ALL
             + "where employee_id = ? order by reception_date DESC ;";
     private static final String SELECT_BY_CLIENT = SELECT_ALL
